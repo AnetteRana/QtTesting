@@ -1,11 +1,21 @@
 #ifndef STACK_H
 #define STACK_H
 
+#include "charnode.h"
 
-class Stack
+
+class stack
 {
 public:
-    Stack();
+    stack();
+    ~stack();
+    void push(char tegn);
+    void pop();
+    int size() const;
+    bool empty() const;
+    char top() const;
+private:
+    CharNode* liste;
 };
 
 #endif // STACK_H
