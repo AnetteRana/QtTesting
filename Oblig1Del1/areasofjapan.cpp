@@ -6,12 +6,18 @@ AreasOfJapan::AreasOfJapan(std::string inName, int inPop)
 
     name = inName;
     population = inPop;
-    // overload inn/out
-    //std::ostream& operator>> (std::ostream& os, const string& obj)
+
+
+    // overload out operator
+//    std::ostream& operator<< (ostream& os, const Date& dt)
 //    {
+//        os << dt.mo << '/' << dt.da << '/' << dt.yr;
 //        return os;
 //    }
 
+    // overload in operator
+
+    // overload + operator
 
 
 }
