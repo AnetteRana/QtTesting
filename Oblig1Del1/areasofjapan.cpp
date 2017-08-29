@@ -1,41 +1,43 @@
 #include "areasofjapan.h"
 
 
+
+AreasOfJapan::AreasOfJapan()
+{
+    name = "Blank";
+    population = 0;
+}
+
 AreasOfJapan::AreasOfJapan(std::string inName, int inPop)
 {
-
     name = inName;
     population = inPop;
-
-
-    // overload out operator
-//    std::ostream& operator<< (ostream& os, const Date& dt)
-//    {
-//        os << dt.mo << '/' << dt.da << '/' << dt.yr;
-//        return os;
-//    }
-
-    // overload in operator
-
-    // overload + operator
-
-
 }
 
-
-AreasOfJapan::printValues()
+bool AreasOfJapan::operator<(AreasOfJapan a)
 {
-    std::cout << name << std::endl << population;
+    if (population < a.population)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
 }
 
-//AreasOfJapan::print()
-//{
-//// read from file
-//string line;
-//ifstream myfile ("AreasOfJapan.txt");
-//while ( getline (myfile,line) )
-//{
-//    cout << line << '\n';
-//}
-//myfile.close();
-//}
+ostream &operator << (ostream &output, AreasOfJapan &obj) // out
+{
+    output << "Area: " << obj.name << ", population: " << obj.population << endl;
+    return output;
+}
+
+istream &operator >> (istream &input, AreasOfJapan &obj) // in
+{
+    input >> obj.name >> obj.population;
+    return input;
+}
+
+
+
+
