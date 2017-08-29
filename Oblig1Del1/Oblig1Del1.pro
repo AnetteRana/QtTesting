@@ -4,9 +4,7 @@ CONFIG -= app_bundle
 CONFIG -= qt
 
 SOURCES += main.cpp \
-    charnode.cpp \
-    stack.cpp
+    areasofjapan.cpp
 
 HEADERS += \
-    charnode.h \
-    stack.h
+    areasofjapan.h
