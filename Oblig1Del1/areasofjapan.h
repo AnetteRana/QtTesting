@@ -16,8 +16,11 @@ public:
     //std::istream& operator>>(std::istream&); // in
     friend ostream &operator << (ostream &output, AreasOfJapan &obj); // out
     friend istream &operator >> (istream &input, AreasOfJapan &obj); // in
+    void SetName(string);
+    void SetPop(int);
+
 private:
-    std::string name;
+    string name;
     int population;
 };
 

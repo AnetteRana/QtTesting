@@ -7,80 +7,83 @@
 using namespace std;
 
 template <class T>
-void SortFunction() // take in array, return array?
+void SortFunction(T a[])
 {
+    // bubble sort
+    int elements = 10;
+    T temp;
+    int i, j;
+    for (i = 0; i < elements; i++)
+    {
+        for (j = i+1; j < elements-1; j++)
+        {
+            if (a[i] < a[j])
+            {
+                temp = a[i];
+                a[i] = a[j];
+                a[j] = temp;
+
+            }
+        }
+    }
 
 }
 
-void writeToFile (AreasOfJapan a)
+void writeToFile (AreasOfJapan a[])
 {
     ofstream myfile;
     myfile.open ("Sorted.txt");
-    myfile << a;
+    for (int i = 0; i < 10; i++) // loops ten times - hardcoded
+    {
+        myfile << a[i] << endl;
+    }
     myfile.close();
 }
 
-
-
-/////////////////
-int main()
+void readFromFile(AreasOfJapan a[])
 {
-
-    AreasOfJapan myArray [10];
-
-    /*
-    int i = 0;
-    // read from file
-    string line;
-    ifstream myfile ("AreasOfJapan.txt");
-    while ( std::getline (myfile,line) )
-    {
-        //std::cout << line << '\n';
-        myArray[i] = line;
-        i++;
-    }
-    myfile.close();
-    cout << "i: " << i << endl;
-    */
-
-    //int tiltall = std::stoi( "985" ); // string to number
-
+    // fil til array
     ifstream myfile ("AreasOfJapan.txt");
     string word;
     int i = 0;
-    while (myfile >> word)
+    int y;
+    int k = 0;
+
+    while (!myfile.eof())
     {
-        cin >> myArray[i]; //word stoi(word);
+        for (int j = 0; j < 2; j++)
+        {
+            // ved oddetall - les inn populasjon
+            if (i%2)
+            {
+                myfile >> word ;
+                y = stoi(word);
+                a[k].SetPop(y);
+            }
+            // ved partall - les inn navn
+            else
+            {
+                myfile >> word ;
+                a[k].SetName(word);
+            }
 
-        i++;
+            i++;
+        }
+        k++;
     }
-
     myfile.close();
+}
 
+/////////////////
+int main()
+{  
 
+    AreasOfJapan myArray [10];
 
+    readFromFile(myArray);
+    SortFunction(myArray);
+    writeToFile(myArray);
 
-    AreasOfJapan test1("First", 5000);
-    AreasOfJapan test2("Second", 1000);
-
-    //cin >> test2;
-
-    // biggest
-    if (test1<test2)
-    {
-        cout << test2;
-        cout << test1;
-        writeToFile(test2);
-        writeToFile(test1);
-    }
-    else
-    {
-        cout << test1;
-        cout << test2;
-        writeToFile(test1);
-        writeToFile(test2);
-    }
-
-
+    cout << "Have a nice day:)\n";
     return 0;
 }
