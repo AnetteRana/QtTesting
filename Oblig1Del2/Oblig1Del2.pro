@@ -4,7 +4,9 @@ CONFIG -= app_bundle
 CONFIG -= qt
 
 SOURCES += main.cpp \
-    charnode.cpp
+    charnode.cpp \
+    stack.cpp
 
 HEADERS += \
-    charnode.h
+    charnode.h \
+    stack.h
