@@ -29,9 +29,13 @@ int main()
     Stack* myStack = new Stack();
     myStack->push('a');
     myStack->push('b');
+    myStack->push('c');
+    myStack->pop();
+    myStack->pop();
+    myStack->pop();
     myStack->pop();
 
-    std::cout << myStack->getTop();
+    std::cout << "\nTop: " << myStack->getTop() << "\nSize: " << myStack->getSize();
 
 
 

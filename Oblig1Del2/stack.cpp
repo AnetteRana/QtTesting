@@ -14,29 +14,45 @@ Stack::~Stack()
 
 void Stack::push(char tegn)
 {
-top = new CharNode(tegn, top);
+    top = new CharNode(tegn, top);
 }
 
 void Stack::pop()
 {
-
+    if (top) // make sure top is nutt a nullptr
+    {
+        CharNode* temp = top->getNext();
+        delete top;
+        top = temp;
+    }
 }
 
-int Stack::size() const
+int Stack::getSize() const
 {
-    return 0;
+    int counter{0};
+    CharNode* temp = top;
+    while (temp)
+    {
+        temp = temp->getNext();
+        counter++;
+    }
+    return counter;
 }
 
-bool Stack::empty() const
+// true if stack is empty
+bool Stack::isEmpty() const
 {
-    return true;
+    if (top)
+        return false;
+    else
+        return true;
 }
 
 char Stack::getTop() const
 {
     if (top)
     {
-    return top->getChar();
+        return top->getChar();
     }
     return 0;
 }

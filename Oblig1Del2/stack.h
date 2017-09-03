@@ -14,8 +14,8 @@ public:
     ~Stack();
     void push(char tegn);
     void pop();
-    int size() const;
-    bool empty() const;
+    int getSize() const;
+    bool isEmpty() const;
     char getTop() const;
 };
 
