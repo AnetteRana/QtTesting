@@ -4,21 +4,28 @@
 
 class BinaryTree
 {
-
     char data;
-    static int sAntall;
     BinaryTree* mLeft;
     BinaryTree* mRight;
     BinaryTree* mParent;
 public:
-    //BinaryTree(char tegn='0', Tree* mLeft=0, Tree* mRight=0, Tree* mParent=0);
-    BinaryTree();
-    BinaryTree* hentNesteL() const;
-    BinaryTree* hentNesteR() const;
-    BinaryTree* hentParent() const;
-    void setNesteL();
-    void setNesteR();
-    void setNesteParent();
+    BinaryTree(char data='0', BinaryTree* mLeft=0, BinaryTree* mRight=0, BinaryTree* mParent=0);
+
+    // set & get - NODEs pointers and data
+    BinaryTree* getLeft();
+    void setLeft(BinaryTree*);
+
+    BinaryTree* getRight();
+    void setRight(BinaryTree*);
+
+    BinaryTree* getParent();
+    void setParent(BinaryTree*);
+
+    char getData();
+    void setData(char);
+
+
+
 
 };
 
