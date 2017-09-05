@@ -1,9 +1,7 @@
 #include "stack.h"
 
-
 Stack::Stack()
 {
-    std::cout << "Stack constructed!\n";
     top = 0;
 }
 
@@ -39,7 +37,7 @@ int Stack::getSize() const
     return counter;
 }
 
-// true if stack is empty
+// return true if stack is empty
 bool Stack::isEmpty() const
 {
     if (top)

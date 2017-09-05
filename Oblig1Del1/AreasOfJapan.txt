@@ -1,0 +1,10 @@
+chubu 21714995
+chugoku 7561899
+hokkaido 5507456
+kansai 22755030
+kanto 42607376
+kyoto 1475183
+kyushu 14596977
+shikoku 3977205
+tohoku 9335088
+tokyo 13617445

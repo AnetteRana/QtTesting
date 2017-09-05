@@ -26,13 +26,15 @@ bool AreasOfJapan::operator<(AreasOfJapan a)
     }
 }
 
-ostream &operator << (ostream &output, AreasOfJapan &obj) // cout
+// cout
+ostream &operator << (ostream &output, AreasOfJapan &obj)
 {
     output << "Area: " << obj.name << ", population: " << obj.population << endl;
     return output;
 }
 
-istream &operator >> (istream &input, AreasOfJapan &obj) // cin // fungerer, men finner ikke bruk for
+// cin (fungerer, men finner ikke bruk for)
+istream &operator >> (istream &input, AreasOfJapan &obj)
 {
     input >> obj.name >> obj.population;
     return input;

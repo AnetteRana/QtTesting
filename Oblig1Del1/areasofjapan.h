@@ -11,9 +11,7 @@ class AreasOfJapan
 public:
     AreasOfJapan();
     AreasOfJapan(std::string, int);
-    bool operator<(AreasOfJapan); // les than
-    //void operator<<(std::string); // out
-    //std::istream& operator>>(std::istream&); // in
+    bool operator<(AreasOfJapan); // less than
     friend ostream &operator << (ostream &output, AreasOfJapan &obj); // out
     friend istream &operator >> (istream &input, AreasOfJapan &obj); // in
     void SetName(string);

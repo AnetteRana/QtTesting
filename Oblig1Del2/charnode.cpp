@@ -6,13 +6,11 @@ int CharNode::sAmount;
 CharNode::CharNode(char inChar, CharNode* inNext):mChar{inChar}, mNext{inNext}
 {
     sAmount++;
-    std::cout << sAmount;
 }
 
 CharNode::~CharNode()
 {
     sAmount--;
-    std::cout << sAmount;
 }
 
 void CharNode::printChar()
@@ -20,20 +18,10 @@ void CharNode::printChar()
     std::cout << mChar;
 }
 
-CharNode* CharNode::getNext()
-{
-    return mNext;
-}
-
-int CharNode::getAmount()
-{
-    return sAmount;
-}
-
-char CharNode::getChar()
-{
-    return mChar;
-}
+// getters
+CharNode* CharNode::getNext(){return mNext;}
+int CharNode::getAmount(){return sAmount;}
+char CharNode::getChar() {return mChar;}
 
 void CharNode::setNext(CharNode* in)
 {

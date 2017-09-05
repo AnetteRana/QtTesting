@@ -1,7 +1,6 @@
 #include <iostream>
-#include <fstream> // read / write to file
+#include <fstream> // read/write to file
 #include "areasofjapan.h"
-
 
 
 using namespace std;
@@ -22,11 +21,9 @@ void SortFunction(T a[])
                 temp = a[i];
                 a[i] = a[j];
                 a[j] = temp;
-
             }
         }
     }
-
 }
 
 void writeToFile (AreasOfJapan a[])
@@ -40,9 +37,9 @@ void writeToFile (AreasOfJapan a[])
     myfile.close();
 }
 
+// les fra fil - skriv til array
 void readFromFile(AreasOfJapan a[])
 {
-    // fil til array
     ifstream myfile ("AreasOfJapan.txt");
     string word;
     int i = 0;
