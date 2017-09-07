@@ -24,7 +24,7 @@ public:
     char getData();
     void setData(char);
 
-
+    // void insertNode (data);
 
 
 };

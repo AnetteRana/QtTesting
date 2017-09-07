@@ -1,34 +1,20 @@
 #ifndef NODE_H
 #define NODE_H
 
-template <class T>
+
 class Node
 {
-    T data;
+public:
+    int data;
     Node* Left;
     Node* Right;
-public:
-    Node(T);
-    T getData();
-    void setData(T);
+    Node(int, Node*, Node*);
 };
 
-template <class T>
-Node<T>::Node(T in) : data{in}
+
+Node::Node(int in = 0, Node* left = 0, Node* right = 0) : data{in}, Left{left}, Right{right}
 {
 
-}
-
-template<class T>
-T Node<T>::getData()
-{
-    return data;
-}
-
-template<class T>
-void Node<T>::setData(T in)
-{
-    data = in;
 }
 
 #endif // NODE_H
