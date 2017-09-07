@@ -1,23 +1,22 @@
 #include <iostream>
 #include "binarytree.h"
+#include "node.h"
+
+
+
 
 using namespace std;
 
 /*
-- Implementer en egen binærtre klasse med parametrisk konstruktør, hent()- og sett()-funksjoner tilsvarende CharNode klassen.
+- Implementer en egen BinaryTree klasse med parametrisk konstruktør, hent()- og sett()-funksjoner tilsvarende CharNode klassen.
 - Skriv et lite testprogram hvor du bygger et tre med 10 noder.
-- Skriv en funksjon (helst i CharNode klassen) som skriver ut alle nodenes verdi.
+- Skriv en funksjon (helst i BinaryTree klassen) som skriver ut alle nodenes verdi.
 */
+
+
 
 int main()
 {
-
-    BinaryTree* root();
-
-
-
-
-
 
 
 
