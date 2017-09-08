@@ -1,31 +1,88 @@
+#include <iostream>
+#include <cstdlib>
 #include "binarytree.h"
 
-BinaryTree::BinaryTree(char idata, BinaryTree* imLeft, BinaryTree* imRight, BinaryTree* imParent):data{idata}, mLeft{imLeft}, mRight{imRight}, mParent{imParent}
+BinaryTree::BinaryTree()
 {
-
+    root = NULL;
 }
 
-BinaryTree* BinaryTree::getLeft(){    return mLeft;}
-BinaryTree* BinaryTree::getRight(){    return mRight;}
-BinaryTree* BinaryTree::getParent(){    return mParent;}
-char BinaryTree::getData(){    return data;}
-
-void BinaryTree::setData(char in)
+BinaryTree::node* BinaryTree::CreateLeaf(int key)
 {
-    data = in;
+    node* ny = new node;
+    ny->key = key;
+    ny->left = NULL;
+    ny->right = NULL;
+
+    return ny;
 }
 
-void BinaryTree::setLeft(BinaryTree* in)
+void BinaryTree::AddLeaf(int key)
 {
-    mLeft = in;
+    AddLeafPrivate(key, root);
 }
 
-void BinaryTree::setRight(BinaryTree* in)
+void BinaryTree::AddLeafPrivate(int key, node* ptr)
 {
-    mRight = in;
+    if (root == NULL)
+    {
+        root = CreateLeaf(key);
+    }
+    else if (key < ptr->key)
+    {
+        if (ptr->left != NULL)
+        {
+            AddLeafPrivate(key, ptr->left);
+        }
+        else
+        {
+            ptr->left = CreateLeaf(key);
+        }
+    }
+    else // (key >= ptr->key)
+    {
+        if (ptr->right != NULL)
+        {
+            AddLeafPrivate(key, ptr->right);
+        }
+        else
+        {
+            ptr->right = CreateLeaf(key);
+        }
+    }
 }
 
-void BinaryTree::setParent(BinaryTree* in)
+void BinaryTree::PrintInOrder()
 {
-    mParent = in;
+    PrintInOrderPrivate(root);
 }
+
+void BinaryTree::PrintInOrderPrivate(node* ptr)
+{
+    if (root != NULL)
+    {
+
+        if (ptr->left != NULL)
+        {
+            PrintInOrderPrivate(ptr->left);
+        }
+        cout << ptr->key << " ";
+        if (ptr->right != NULL)
+        {
+            PrintInOrderPrivate(ptr->right);
+        }
+
+
+
+    }
+    else
+    {
+        cout << "The tree is empty.\n";
+    }
+}
+
+
+
+
+
+

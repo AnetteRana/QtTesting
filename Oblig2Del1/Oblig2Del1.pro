@@ -7,5 +7,4 @@ SOURCES += main.cpp \
     binarytree.cpp
 
 HEADERS += \
-    binarytree.h \
-    node.h
+    binarytree.h

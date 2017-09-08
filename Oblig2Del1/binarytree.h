@@ -1,30 +1,28 @@
 #ifndef BINARYTREE_H
 #define BINARYTREE_H
-
+using namespace std;
 
 class BinaryTree
 {
-    char data;
-    BinaryTree* mLeft;
-    BinaryTree* mRight;
-    BinaryTree* mParent;
+private:
+
+    struct node
+    {
+        int key;
+        node* left;
+        node* right;
+    };
+
+    node* root;
+    void AddLeafPrivate(int key, node* ptr);
+    void PrintInOrderPrivate(node* ptr);
+
 public:
-    BinaryTree(char data='0', BinaryTree* mLeft=0, BinaryTree* mRight=0, BinaryTree* mParent=0);
+    BinaryTree();
 
-    // set & get - NODEs pointers and data
-    BinaryTree* getLeft();
-    void setLeft(BinaryTree*);
-
-    BinaryTree* getRight();
-    void setRight(BinaryTree*);
-
-    BinaryTree* getParent();
-    void setParent(BinaryTree*);
-
-    char getData();
-    void setData(char);
-
-    // void insertNode (data);
+    node* CreateLeaf(int key);
+    void AddLeaf(int key);
+    void PrintInOrder();
 
 
 };

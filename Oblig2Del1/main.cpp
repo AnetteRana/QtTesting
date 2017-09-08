@@ -1,7 +1,6 @@
 #include <iostream>
+#include <cstdlib>
 #include "binarytree.h"
-#include "node.h"
-
 
 
 
@@ -16,18 +15,6 @@ using namespace std;
 
 int main()
 {
-
-    Node* atest = new Node(5, 0, 0);
-    Node* btest = new Node(8, 0, 0);
-    if (btest->data < atest->data)
-    {
-        atest->Left = btest;
-    }
-    else
-    {
-        atest->Right = btest;
-    }
-    cout << "Right: " << atest->Right->data;
 
 
 
