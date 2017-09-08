@@ -16,14 +16,18 @@ private:
     node* root;
     void AddLeafPrivate(int key, node* ptr);
     void PrintInOrderPrivate(node* ptr);
+    node* CreateLeaf(int key);
+    node* ReturnNodePrivate(int key, node* ptr);
+
 
 public:
     BinaryTree();
 
-    node* CreateLeaf(int key);
     void AddLeaf(int key);
     void PrintInOrder();
-
+    node* ReturnNode(int key); // make private
+    int ReturnRootKey();
+    void PrintChildren(int key);
 
 };
 
