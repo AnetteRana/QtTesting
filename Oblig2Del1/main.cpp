@@ -26,11 +26,11 @@ int main()
         myTree.AddLeaf(treeKeys[i]);
     }
 
-    cout << "Printing tree using in-order traversal: ";
-    myTree.PrintInOrder();
-
     cout << "\nPrinting tree using pre-order traversal: ";
     myTree.PrintPreOrder();
+
+    cout << "\nPrinting tree using in-order traversal: ";
+    myTree.PrintInOrder();
 
     cout << "\nPrinting tree using post-order traversal: ";
     myTree.PrintPostOrder();

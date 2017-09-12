@@ -52,32 +52,6 @@ void BinaryTree::AddLeafPrivate(int key, node* ptr)
     }
 }
 
-void BinaryTree::PrintInOrder()
-{
-    PrintInOrderPrivate(root);
-}
-
-void BinaryTree::PrintInOrderPrivate(node* ptr)
-{
-    if (root != NULL)
-    {
-
-        if (ptr->left != NULL)
-        {
-            PrintInOrderPrivate(ptr->left);
-        }
-        cout << ptr->key << " ";
-        if (ptr->right != NULL)
-        {
-            PrintInOrderPrivate(ptr->right);
-        }
-    }
-    else
-    {
-        cout << "The tree is empty.\n";
-    }
-}
-
 BinaryTree::node* BinaryTree::ReturnNode(int key)
 {
     return ReturnNodePrivate(key, root);
@@ -211,7 +185,7 @@ void BinaryTree::PrintPreOrder()
 {
     if (root)
     {
-    PrintPreOrderPrivate(root);
+        PrintPreOrderPrivate(root);
     }
     else
     {
@@ -221,22 +195,48 @@ void BinaryTree::PrintPreOrder()
 
 void BinaryTree::PrintPreOrderPrivate(node* ptr)
 {
-            cout << ptr->key << " ";
-        if (ptr->left)
+    cout << ptr->key << " ";
+    if (ptr->left)
+    {
+        PrintPreOrderPrivate(ptr->left);
+    }
+    if (ptr->right)
+    {
+        PrintPreOrderPrivate(ptr->right);
+    }
+}
+
+void BinaryTree::PrintInOrder()
+{
+    PrintInOrderPrivate(root);
+}
+
+void BinaryTree::PrintInOrderPrivate(node* ptr)
+{
+    if (root != NULL)
+    {
+
+        if (ptr->left != NULL)
         {
-            PrintPreOrderPrivate(ptr->left);
+            PrintInOrderPrivate(ptr->left);
         }
-        if (ptr->right)
+        cout << ptr->key << " ";
+        if (ptr->right != NULL)
         {
-            PrintPreOrderPrivate(ptr->right);
+            PrintInOrderPrivate(ptr->right);
         }
+    }
+    else
+    {
+        cout << "The tree is empty.\n";
+    }
 }
 
 void BinaryTree::PrintPostOrder()
 {
     if (root)
     {
-    PrintPostOrderPrivate(root);
+        PrintPostOrderPrivate(root);
     }
     else
     {
@@ -246,16 +246,26 @@ void BinaryTree::PrintPostOrder()
 
 void BinaryTree::PrintPostOrderPrivate(node* ptr)
 {
-        if (ptr->left)
-        {
-            PrintPostOrderPrivate(ptr->left);
-        }
-        if (ptr->right)
-        {
-            PrintPostOrderPrivate(ptr->right);
-        }
-        cout << ptr->key << " ";
+    if (ptr->left)
+    {
+        PrintPostOrderPrivate(ptr->left);
+    }
+    if (ptr->right)
+    {
+        PrintPostOrderPrivate(ptr->right);
+    }
+    cout << ptr->key << " ";
 }
+
+void BinaryTree::DeleteNode(int key)
+{
+
+    node* ToDelete = ReturnNode(key);
+
+
+}
+
+
 
 
 
