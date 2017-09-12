@@ -13,12 +13,14 @@ private:
         node* right;
     };
 
+
     node* root;
     void AddLeafPrivate(int key, node* ptr);
     void PrintInOrderPrivate(node* ptr);
     node* CreateLeaf(int key);
     node* ReturnNodePrivate(int key, node* ptr);
-
+    int CountNodesInTreePrivate(int numberOut, node* ptr);
+    int CountLevelsPrivate(node* ptr, int counter, int& highest);
 
 public:
     BinaryTree();
@@ -28,6 +30,9 @@ public:
     node* ReturnNode(int key); // make private
     int ReturnRootKey();
     void PrintChildren(int key);
+    int CountNodesInTreePublic(int numberOut);
+    int CountLevelsPublic();
+
 
 };
 

@@ -16,7 +16,7 @@ using namespace std;
 int main()
 {
 
-    int treeKeys[10] = {5,3,1,9,7,8,2,0,6,4};
+    int treeKeys[10] = {1, 2,5,4,7,5,5,4,4,6};
     BinaryTree myTree;
 
     cout << "Print tree before adding keys: ";
@@ -30,13 +30,16 @@ int main()
     cout << "Printing tree after adding keys: ";
     myTree.PrintInOrder();
 
-    int x = 0;
-    while (x >= 0)
-    {
-        cout << "\n\nWhich number to see children of? (negative number to exit)\n";
-        cin >> x;
-        myTree.PrintChildren(x);
-    }
+//    int x = 0;
+//    while (x >= 0)
+//    {
+//        cout << "\n\nWhich number to see children of? (negative number to exit)\n";
+//        cin >> x;
+//        myTree.PrintChildren(x);
+//    }
+
+    cout << "\nNumb of nodes: " << myTree.CountNodesInTreePublic(0);
+    cout << "\nNumb of levels: " << myTree.CountLevelsPublic();
 
 
     cout << endl;

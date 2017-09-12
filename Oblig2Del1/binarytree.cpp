@@ -151,9 +151,61 @@ void BinaryTree::PrintChildren(int key)
 
 }
 
+int BinaryTree::CountNodesInTreePrivate(int numberOut, node* ptr)
+{
+    if (ptr)
+    {
+        numberOut++;
+        if (ptr->left)
+        {
+            numberOut=CountNodesInTreePrivate(numberOut, ptr->left);
+        }
+        if (ptr->right)
+        {
+            numberOut=CountNodesInTreePrivate(numberOut, ptr->right);
+        }
+    }
+    return numberOut;
+}
 
+int BinaryTree::CountNodesInTreePublic(int numberOut)
+{
+    CountNodesInTreePrivate(numberOut, root);
+}
 
+int BinaryTree::CountLevelsPublic()
+{
+    int levels = 0;
+    CountLevelsPrivate(root, 0, levels);
+    return levels;
+}
 
+int BinaryTree::CountLevelsPrivate(node* ptr, int counter, int& highest)
+{
+    if (ptr)
+    {
+        counter++;
+        if (ptr->left)
+        {
+            counter=CountLevelsPrivate(ptr->left, counter, highest);
+        }
+        if (ptr->right)
+        {
+            counter=CountLevelsPrivate(ptr->right, counter, highest);
+        }
+        if ((!ptr->left)&&(!ptr->right))
+        {
+            if (counter > highest)
+            {
+                highest = counter;
+            }
+            counter--;
+            return counter;
+        }
+    }
+    counter--;
+    return counter;
+}
 
 
 
