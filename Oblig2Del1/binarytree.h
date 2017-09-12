@@ -21,6 +21,8 @@ private:
     node* ReturnNodePrivate(int key, node* ptr);
     int CountNodesInTreePrivate(int numberOut, node* ptr);
     int CountLevelsPrivate(node* ptr, int counter, int& highest);
+    void PrintPreOrderPrivate(node* ptr);
+    void PrintPostOrderPrivate(node* ptr);
 
 public:
     BinaryTree();
@@ -32,6 +34,8 @@ public:
     void PrintChildren(int key);
     int CountNodesInTreePublic(int numberOut);
     int CountLevelsPublic();
+    void PrintPreOrder();
+    void PrintPostOrder();
 
 
 };

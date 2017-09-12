@@ -207,7 +207,55 @@ int BinaryTree::CountLevelsPrivate(node* ptr, int counter, int& highest)
     return counter;
 }
 
+void BinaryTree::PrintPreOrder()
+{
+    if (root)
+    {
+    PrintPreOrderPrivate(root);
+    }
+    else
+    {
+        cout << "The tree is empty.\n";
+    }
+}
 
+void BinaryTree::PrintPreOrderPrivate(node* ptr)
+{
+            cout << ptr->key << " ";
+        if (ptr->left)
+        {
+            PrintPreOrderPrivate(ptr->left);
+        }
+        if (ptr->right)
+        {
+            PrintPreOrderPrivate(ptr->right);
+        }
+}
+
+void BinaryTree::PrintPostOrder()
+{
+    if (root)
+    {
+    PrintPostOrderPrivate(root);
+    }
+    else
+    {
+        cout << "The tree is empty.\n";
+    }
+}
+
+void BinaryTree::PrintPostOrderPrivate(node* ptr)
+{
+        if (ptr->left)
+        {
+            PrintPostOrderPrivate(ptr->left);
+        }
+        if (ptr->right)
+        {
+            PrintPostOrderPrivate(ptr->right);
+        }
+        cout << ptr->key << " ";
+}
 
 
 
