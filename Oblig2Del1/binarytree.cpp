@@ -265,6 +265,116 @@ void BinaryTree::DeleteNode(int key)
 
 }
 
+void BinaryTree::RemoveNode(int key)
+{
+    if (root)
+    {
+        if (root->key == key)
+        {
+            // need to remove the root node
+        }
+        else
+        {
+            RemoveNodePrivate(key, root);
+        }
+    }
+    else
+    {
+        cout << "Can't remove node, since the tree is empty\n";
+    }
+}
+
+BinaryTree::node* BinaryTree::GetSmallestNode(node* ptr)
+{
+    if (ptr->left)
+    {
+        return GetSmallestNode(ptr->left);
+    }
+    return ptr;
+}
+
+void BinaryTree::RemoveNodePrivate(int key, node* parent)
+{
+    // left:
+    if (parent->left && key < parent->key)
+    {
+        if (key == parent->left->key)
+        {
+            // parent points to "node to delete"
+            node* toDelete = parent->left;
+
+            if (parent->left->right)
+            {
+                // node has child to right
+                node* smallest = GetSmallestNode(parent->left->right);
+                smallest->left = parent->left->left;
+                parent->left = smallest;
+            }
+            else
+            {
+                // no right children
+                if (parent->left->left)
+                {
+                    parent->left = parent->left->left;
+                }
+                else
+                {
+                    parent->left = nullptr;
+                }
+            }
+            // delete node toDelete
+        }
+        else
+        {
+            RemoveNodePrivate(key, parent->left);
+        }
+    }
+
+    // right:
+    else if (parent->right && key > parent->key)
+    {
+        if (key == parent->right->key)
+        {
+            // parent points to "node to delete"
+            node* toDelete = parent->right;
+
+            if (parent->right->right)
+            {
+                // node has child to right
+                node* smallest = GetSmallestNode(parent->right->right);
+                smallest->left = parent->right->left;
+                smallest->right = parent->right->right;
+                parent->right = smallest;
+            }
+            else
+            {
+                // no right children
+                if (parent->right->left)
+                {
+                    parent->right = parent->right->left;
+                }
+                else
+                {
+                    parent->right = nullptr;
+                }
+            }
+            // delete node toDelete
+        }
+        else
+        {
+            RemoveNodePrivate(key, parent->right);
+        }
+    }
+
+    // no key match:
+    else
+    {
+        cout << "Can't remove, no such node in tree.\n";
+    }
+
+}
+
+
 
 
 

@@ -25,6 +25,8 @@ private:
     void PrintPreOrderPrivate(node* ptr);
     void PrintInOrderPrivate(node* ptr);
     void PrintPostOrderPrivate(node* ptr);
+    node* GetSmallestNode(node* ptr);
+    void RemoveNodePrivate(int key, node* parent);
 
 public:
     BinaryTree();
@@ -37,6 +39,7 @@ public:
     void PrintInOrder();
     void PrintPostOrder();
     void DeleteNode(int key);
+    void RemoveNode(int key);
 
 
 };

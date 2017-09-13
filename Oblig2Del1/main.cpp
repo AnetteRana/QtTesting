@@ -38,8 +38,11 @@ int main()
     cout << "\nNumb of nodes: " << myTree.CountNodesInTreePublic(0);
     cout << "\nNumb of levels: " << myTree.CountLevelsPublic();
 
-    //PrintNodeAndChildren(myTree);
 
+    cout << endl;
+    myTree.RemoveNode(2);
+
+    PrintNodeAndChildren(myTree);
 
     cout << endl;
     return 0;
