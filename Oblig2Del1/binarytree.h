@@ -18,15 +18,15 @@ private:
 
     void AddLeafPrivate(int key, node* ptr);
     node* CreateLeaf(int key);
-     node* ReturnNode(int key);
+    node* ReturnNode(int key);
     node* ReturnNodePrivate(int key, node* ptr);
     int CountNodesInTreePrivate(int numberOut, node* ptr);
     int CountLevelsPrivate(node* ptr, int counter, int& highest);
     void PrintPreOrderPrivate(node* ptr);
     void PrintInOrderPrivate(node* ptr);
     void PrintPostOrderPrivate(node* ptr);
-    node* GetSmallestNode(node* ptr);
-    void RemoveNodePrivate(int key, node* parent);
+    int FindSmallestPrivate(node* ptr);
+    void RemoveNodePrivete(int key, node* parent);
 
 public:
     BinaryTree();
@@ -38,7 +38,7 @@ public:
     void PrintPreOrder();
     void PrintInOrder();
     void PrintPostOrder();
-    void DeleteNode(int key);
+    int FindSmallest();
     void RemoveNode(int key);
 
 
