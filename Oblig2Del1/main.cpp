@@ -6,7 +6,7 @@
 
 using namespace std;
 
-void PrintNodeAndChildren(BinaryTree tree)
+void PrintNodeAndChildren(BinaryTree<int> tree)
 {
     int x = 0;
     while (x >= 0)
@@ -17,7 +17,7 @@ void PrintNodeAndChildren(BinaryTree tree)
     }
 }
 
-void DeleteFunction(BinaryTree tree)
+void DeleteFunction(BinaryTree<int> tree)
 {
     int input{0};
     while (input >= 0)
@@ -39,7 +39,7 @@ void DeleteFunction(BinaryTree tree)
 int main()
 {
     int treeKeys[10] = {6,1,8,0,2,7,9,4,3,5};
-    BinaryTree* myTree = new BinaryTree;
+    BinaryTree<int>* myTree = new BinaryTree<int>;
 
     for (int i = 0; i < 10; i++)
     {
