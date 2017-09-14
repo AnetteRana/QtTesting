@@ -57,19 +57,6 @@ int main()
 
     cout << endl;
 
-    DeleteFunction(*myTree);
-    PrintNodeAndChildren(*myTree);
-    DeleteFunction(*myTree);
-    PrintNodeAndChildren(*myTree);
-    DeleteFunction(*myTree);
-    PrintNodeAndChildren(*myTree);
-    DeleteFunction(*myTree);
-    PrintNodeAndChildren(*myTree);
-    DeleteFunction(*myTree);
-    PrintNodeAndChildren(*myTree);
-    DeleteFunction(*myTree);
-    PrintNodeAndChildren(*myTree);
-
 
 
 

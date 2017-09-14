@@ -29,9 +29,11 @@ private:
     void RemoveNodePrivate(int key, node* parent);
     void RemoveRootMatch();
     void RemoveMatch(node* parent, node* match, bool left);
+    void RemoveSubtree(node* ptr);
 
 public:
     BinaryTree();
+    ~BinaryTree();
     void AddLeaf(int key);
     int ReturnRootKey();
     void PrintChildren(int key);

@@ -7,6 +7,12 @@ BinaryTree::BinaryTree()
     root = NULL;
 }
 
+BinaryTree::~BinaryTree()
+{
+    if (root)
+    RemoveSubtree(root);
+}
+
 BinaryTree::node* BinaryTree::CreateLeaf(int key)
 {
     node* ny = new node;
@@ -392,7 +398,19 @@ void BinaryTree::RemoveMatch(node* parent, node* match, bool left)
 
 }
 
-
+void BinaryTree::RemoveSubtree(node* ptr)
+{
+ if (ptr->left)
+ {
+     RemoveSubtree(ptr->left);
+ }
+ if (ptr->right)
+ {
+    RemoveSubtree(ptr->right);
+ }
+ cout << "Deleting the node: " << ptr->key << endl;
+ delete ptr;
+}
 
 
 
