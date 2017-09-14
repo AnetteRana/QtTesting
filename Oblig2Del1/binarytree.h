@@ -26,7 +26,9 @@ private:
     void PrintInOrderPrivate(node* ptr);
     void PrintPostOrderPrivate(node* ptr);
     int FindSmallestPrivate(node* ptr);
-    void RemoveNodePrivete(int key, node* parent);
+    void RemoveNodePrivate(int key, node* parent);
+    void RemoveRootMatch();
+    void RemoveMatch(node* parent, node* match, bool left);
 
 public:
     BinaryTree();

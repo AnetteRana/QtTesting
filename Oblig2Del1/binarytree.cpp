@@ -185,6 +185,7 @@ void BinaryTree::PrintPreOrder()
 {
     if (root)
     {
+        cout << "\nPrinting tree using pre-order traversal: ";
         PrintPreOrderPrivate(root);
     }
     else
@@ -208,6 +209,7 @@ void BinaryTree::PrintPreOrderPrivate(node* ptr)
 
 void BinaryTree::PrintInOrder()
 {
+    cout << "\nPrinting tree using in-order traversal: ";
     PrintInOrderPrivate(root);
 }
 
@@ -236,6 +238,7 @@ void BinaryTree::PrintPostOrder()
 {
     if (root)
     {
+        cout << "\nPrinting tree using post-order traversal: ";
         PrintPostOrderPrivate(root);
     }
     else
@@ -306,7 +309,95 @@ void BinaryTree::RemoveNodePrivate(int key, node* parent)
                     RemoveMatch(parent, parent->left, true) :
                     RemoveNodePrivate(key, parent->left);
     }
+    else if (key > parent->key && parent->right)
+    {
+        parent->right->key == key ?
+                    RemoveMatch(parent, parent->right, false) :
+                    RemoveNodePrivate(key, parent->right);
+    }
+    else
+    {
+        cout << "Key not found\n";
+    }
 }
+
+void BinaryTree::RemoveRootMatch()
+{
+    node* delPtr = root;
+    int rootKey = root->key;
+    int smallestInRightSubtree;
+
+    // no children
+    if (!root->left && !root->right)
+    {
+        root = nullptr;
+    }
+    // 1 child
+    else if (!root->left && root->right)
+    {
+        root = root->right;
+        delPtr->right = nullptr;
+        delete delPtr;
+    }
+    else if (root->left && !root->right)
+    {
+        root = root->left;
+        delPtr->left = nullptr;
+        delete delPtr;
+    }
+    // 2 children
+    else
+    {
+        smallestInRightSubtree = FindSmallestPrivate(root->right);
+        RemoveNodePrivate(smallestInRightSubtree, root);
+        root->key = smallestInRightSubtree;
+
+    }
+    cout << "Something should be removed\n";
+}
+
+void BinaryTree::RemoveMatch(node* parent, node* match, bool left)
+{
+    cout << "Lets remove node\n";
+    node* delPtr = match;
+    int matchKey = match->key;
+    int smallestInRightSubtree;
+
+    // no children
+    if (!match->left && !match->right)
+    {
+        left ? parent->left = nullptr : parent->right = nullptr;
+        delete delPtr;
+    }
+    // 1 child
+    else if (match->left && !match->right)
+    {
+        left ? parent->left = match->left : parent->right = match->left;
+        match->left = nullptr;
+        delete delPtr;
+    }
+    else if (!match->left && match->right)
+    {
+        left ? parent->left = match->right : parent->right = match->right;
+        match->right = nullptr;
+        delete delPtr;
+    }
+    // 2 children
+    else
+    {
+        smallestInRightSubtree = FindSmallestPrivate(match->right);
+        RemoveNodePrivate(smallestInRightSubtree, match);
+        match->key = smallestInRightSubtree;
+    }
+
+}
+
+
+
+
+
+
+
 
 
 
