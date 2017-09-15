@@ -319,7 +319,7 @@ void BinaryTree<T>::PrintPostOrderPrivate(node* ptr)
     cout << ptr->key << " ";
 }
 template <class T>
-T BinaryTree<T>::BinaryTree<T>::FindSmallest()
+T BinaryTree<T>::FindSmallest()
 {
     if (root)
     {
@@ -332,7 +332,7 @@ T BinaryTree<T>::BinaryTree<T>::FindSmallest()
     }
 }
 template <class T>
-T BinaryTree<T>::BinaryTree<T>::FindSmallestPrivate(node* ptr)
+T BinaryTree<T>::FindSmallestPrivate(node* ptr)
 {
     if (ptr->left)
     {

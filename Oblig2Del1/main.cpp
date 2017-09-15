@@ -8,7 +8,7 @@ using namespace std;
 
 void PrintNodeAndChildren(BinaryTree<int> tree)
 {
-    int x = 0;
+    char x = 0;
     while (x >= 0)
     {
         cout << "\n\nWhich number to see children of? (negative number to exit)\n";
@@ -39,6 +39,7 @@ void DeleteFunction(BinaryTree<int> tree)
 int main()
 {
     int treeKeys[10] = {6,1,8,0,2,7,9,4,3,5};
+    //char treeKeys[10] = {'j','s','y','i','s','u','a','o','w','m'};
     BinaryTree<int>* myTree = new BinaryTree<int>;
 
     for (int i = 0; i < 10; i++)
