@@ -3,64 +3,62 @@
 #include <cstdlib>
 #include "binarytree.h"
 
-
 using namespace std;
-
-void PrintNodeAndChildren(BinaryTree<int> tree)
-{
-    char x = 0;
-    while (x >= 0)
-    {
-        cout << "\n\nWhich number to see children of? (negative number to exit)\n";
-        cin >> x;
-        tree.PrintChildren(x);
-    }
-}
-
-void DeleteFunction(BinaryTree<int> tree)
-{
-    int input{0};
-    while (input >= 0)
-    {
-        cout << "Enter a key value to delete. (negative number to exit)\n";
-        cin >> input;
-        if (input >= 0)
-        {
-            cout << endl;
-            tree.RemoveNode(input);
-
-            cout << "\nPrinting tree using in-order traversal: ";
-            tree.PrintInOrder();
-            cout << endl;
-        }
-    }
-}
 
 int main()
 {
+    /*
     int treeKeys[10] = {6,1,8,0,2,7,9,4,3,5};
-    //char treeKeys[10] = {'j','s','y','i','s','u','a','o','w','m'};
     BinaryTree<int>* myTree = new BinaryTree<int>;
+    */
+    char treeKeys[10] = {'g','b','i','a','c','h','j','e','d','f'};
+    BinaryTree<char>* myTree = new BinaryTree<char>;
 
+    ////// ^^^ kommenter ut en av treene over ^^^
+
+    // bygger treet
     for (int i = 0; i < 10; i++)
     {
         myTree->AddLeaf(treeKeys[i]);
     }
 
-    // print:
-    myTree->PrintPreOrder();
-    myTree->PrintInOrder();
-    myTree->PrintPostOrder();
-
-    cout << "\nNumb of nodes: " << myTree->CountNodesInTreePublic(0);
-    cout << "\nNumb of levels: " << myTree->CountLevelsPublic();
-
-
-    cout << endl;
-
-
-
-
+    // test program
+    int program;
+    cout << "\n\nWhat to do?\n1) Delete a node\n2) Print a node, and its children\n3) Visual print of top four levels\n4) Insert\n5) Traverse\n6) Stats\n";
+    cin >> program;
+    while(program > 0)
+    {
+        switch (program)
+        {
+        case 1:
+            myTree->DeleteFunction();
+            break;
+        case 2:
+            myTree->VisualPrintNodeAndChildren();
+            break;
+        case 3:
+            myTree->VisualPrint();
+            break;
+        case 4:
+            myTree->InsertFunction();
+            break;
+        case 5:
+            // demonstrate different ways to print:
+            myTree->PrintPreOrder();
+            myTree->PrintInOrder();
+            myTree->PrintPostOrder();
+            break;
+        case 6:
+            cout << "\nNumb of nodes: " << myTree->CountNodesInTreePublic();
+            cout << "\nNumb of levels: " << myTree->CountLevelsPublic();
+            break;
+        default:
+            cout << "Huh?\n";
+            break;
+        }
+        cout << "\n\nWhat to do?\n1) Delete a node\n2) Print a node, and its children\n3) Visual print of top four levels\n4) Insert\n5) Traverse\n6) Stats\n";
+        cin >> program;
+    }
 
     cout << endl;
     return 0;

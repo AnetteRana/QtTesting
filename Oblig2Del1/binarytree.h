@@ -17,18 +17,19 @@ private:
         node* right;
     };
 
-
     node* root;
 
     void AddLeafPrivate(T key, node* ptr);
     node* CreateLeaf(T key);
     node* ReturnNode(T key);
     node* ReturnNodePrivate(T key, node* ptr);
-    T CountNodesInTreePrivate(T numberOut, node* ptr);
-    T CountLevelsPrivate(node* ptr, T counter, T& highest);
+    int CountNodesInTreePrivate(int numberOut, node* ptr);
+    int CountLevelsPrivate(node* ptr, int counter, int& highest);
+
     void PrintPreOrderPrivate(node* ptr);
     void PrintInOrderPrivate(node* ptr);
     void PrintPostOrderPrivate(node* ptr);
+
     T FindSmallestPrivate(node* ptr);
     void RemoveNodePrivate(T key, node* parent);
     void RemoveRootMatch();
@@ -41,30 +42,35 @@ public:
     void AddLeaf(T key);
     T ReturnRootKey();
     void PrintChildren(T key);
-    T CountNodesInTreePublic(T numberOut);
-    T CountLevelsPublic();
+    int CountNodesInTreePublic();
+    int CountLevelsPublic();
     void PrintPreOrder();
     void PrintInOrder();
     void PrintPostOrder();
     T FindSmallest();
     void RemoveNode(T key);
 
-
+    void PrintNodeAndChildren();
+    void DeleteFunction();
+    void VisualPrint();
+    void VisualPrintNodeAndChildren();
+    void InsertFunction();
 };
 
-
-
+// Siden det er template klasse må alt være i headeren:
 template <class T>
 BinaryTree<T>::BinaryTree()
 {
     root = NULL;
 }
+
 template <class T>
 BinaryTree<T>::~BinaryTree()
 {
     if (root)
-    RemoveSubtree(root);
+        RemoveSubtree(root);
 }
+
 template <class T>
 class BinaryTree<T>::node* BinaryTree<T>::CreateLeaf(T key)
 {
@@ -75,11 +81,13 @@ class BinaryTree<T>::node* BinaryTree<T>::CreateLeaf(T key)
 
     return ny;
 }
+
 template <class T>
 void BinaryTree<T>::AddLeaf(T key)
 {
     AddLeafPrivate(key, root);
 }
+
 template <class T>
 void BinaryTree<T>::AddLeafPrivate(T key, node* ptr)
 {
@@ -110,15 +118,16 @@ void BinaryTree<T>::AddLeafPrivate(T key, node* ptr)
         }
     }
 }
+
 template <class T>
 class BinaryTree<T>::node* BinaryTree<T>::ReturnNode(T key)
 {
     return ReturnNodePrivate(key, root);
 }
+
 template <class T>
 class BinaryTree<T>::node* BinaryTree<T>::ReturnNodePrivate(T key, node* ptr)
 {
-
     if (ptr)
     {
         if (ptr->key == key)
@@ -138,8 +147,8 @@ class BinaryTree<T>::node* BinaryTree<T>::ReturnNodePrivate(T key, node* ptr)
     {
         return NULL;
     }
-
 }
+
 template <class T>
 T BinaryTree<T>::ReturnRootKey()
 {
@@ -153,6 +162,7 @@ T BinaryTree<T>::ReturnRootKey()
         return 0;
     }
 }
+
 template <class T>
 void BinaryTree<T>::PrintChildren(T key)
 {
@@ -179,12 +189,12 @@ void BinaryTree<T>::PrintChildren(T key)
     }
     else
     {
-        cout << "No children\n";
+        cout << "No such node.\n";
     }
-
 }
+
 template <class T>
-T BinaryTree<T>::CountNodesInTreePrivate(T numberOut, node* ptr)
+int BinaryTree<T>::CountNodesInTreePrivate(int numberOut, node* ptr)
 {
     if (ptr)
     {
@@ -200,20 +210,23 @@ T BinaryTree<T>::CountNodesInTreePrivate(T numberOut, node* ptr)
     }
     return numberOut;
 }
+
 template <class T>
-T BinaryTree<T>::CountNodesInTreePublic(T numberOut)
+int BinaryTree<T>::CountNodesInTreePublic()
 {
-    return CountNodesInTreePrivate(numberOut, root);
+    return CountNodesInTreePrivate(0, root);
 }
+
 template <class T>
-T BinaryTree<T>::CountLevelsPublic()
+int BinaryTree<T>::CountLevelsPublic()
 {
     int levels = 0;
     CountLevelsPrivate(root, 0, levels);
     return levels;
 }
+
 template <class T>
-T BinaryTree<T>::CountLevelsPrivate(node* ptr, T counter, T& highest)
+int BinaryTree<T>::CountLevelsPrivate(node* ptr, int counter, int& highest)
 {
     if (ptr)
     {
@@ -239,6 +252,7 @@ T BinaryTree<T>::CountLevelsPrivate(node* ptr, T counter, T& highest)
     counter--;
     return counter;
 }
+
 template <class T>
 void BinaryTree<T>::PrintPreOrder()
 {
@@ -252,6 +266,7 @@ void BinaryTree<T>::PrintPreOrder()
         cout << "The tree is empty.\n";
     }
 }
+
 template <class T>
 void BinaryTree<T>::PrintPreOrderPrivate(node* ptr)
 {
@@ -265,12 +280,14 @@ void BinaryTree<T>::PrintPreOrderPrivate(node* ptr)
         PrintPreOrderPrivate(ptr->right);
     }
 }
+
 template <class T>
 void BinaryTree<T>::PrintInOrder()
 {
     cout << "\nPrinting tree using in-order traversal: ";
     PrintInOrderPrivate(root);
 }
+
 template <class T>
 void BinaryTree<T>::PrintInOrderPrivate(node* ptr)
 {
@@ -292,6 +309,7 @@ void BinaryTree<T>::PrintInOrderPrivate(node* ptr)
         cout << "The tree is empty.\n";
     }
 }
+
 template <class T>
 void BinaryTree<T>::PrintPostOrder()
 {
@@ -305,6 +323,7 @@ void BinaryTree<T>::PrintPostOrder()
         cout << "The tree is empty.\n";
     }
 }
+
 template <class T>
 void BinaryTree<T>::PrintPostOrderPrivate(node* ptr)
 {
@@ -318,6 +337,7 @@ void BinaryTree<T>::PrintPostOrderPrivate(node* ptr)
     }
     cout << ptr->key << " ";
 }
+
 template <class T>
 T BinaryTree<T>::FindSmallest()
 {
@@ -331,6 +351,7 @@ T BinaryTree<T>::FindSmallest()
         return 0;
     }
 }
+
 template <class T>
 T BinaryTree<T>::FindSmallestPrivate(node* ptr)
 {
@@ -343,6 +364,7 @@ T BinaryTree<T>::FindSmallestPrivate(node* ptr)
         return ptr->key;
     }
 }
+
 template <class T>
 void BinaryTree<T>::RemoveNode(T key)
 {
@@ -358,6 +380,7 @@ void BinaryTree<T>::RemoveNode(T key)
         }
     }
 }
+
 template <class T>
 void BinaryTree<T>::RemoveNodePrivate(T key, node* parent)
 {
@@ -378,6 +401,7 @@ void BinaryTree<T>::RemoveNodePrivate(T key, node* parent)
         cout << "Key not found\n";
     }
 }
+
 template <class T>
 void BinaryTree<T>::RemoveRootMatch()
 {
@@ -410,12 +434,11 @@ void BinaryTree<T>::RemoveRootMatch()
         root->key = smallestInRightSubtree;
 
     }
-    cout << "Something should be removed\n";
 }
+
 template <class T>
 void BinaryTree<T>::RemoveMatch(node* parent, node* match, bool left)
 {
-    cout << "Lets remove node\n";
     node* delPtr = match;
     T smallestInRightSubtree;
 
@@ -445,25 +468,164 @@ void BinaryTree<T>::RemoveMatch(node* parent, node* match, bool left)
         RemoveNodePrivate(smallestInRightSubtree, match);
         match->key = smallestInRightSubtree;
     }
-
 }
+
 template <class T>
 void BinaryTree<T>::RemoveSubtree(node* ptr)
 {
- if (ptr->left)
- {
-     RemoveSubtree(ptr->left);
- }
- if (ptr->right)
- {
-    RemoveSubtree(ptr->right);
- }
- cout << "Deleting the node: " << ptr->key << endl;
- delete ptr;
+    if (ptr->left)
+    {
+        RemoveSubtree(ptr->left);
+    }
+    if (ptr->right)
+    {
+        RemoveSubtree(ptr->right);
+    }
+    cout << "Deleting the node: " << ptr->key << endl;
+    delete ptr;
+}
+
+// extra funksjoner for å printe treet, og å slette noder
+template <class T>
+void BinaryTree<T>::PrintNodeAndChildren()
+{
+    T x;
+    cout << "\n\nWhich node to see children of?\n";
+    cin >> x;
+    PrintChildren(x);
+
+}
+
+template <class T>
+void BinaryTree<T>::DeleteFunction()
+{
+    T input;
+
+    cout << "Enter a node to delete.\n";
+    cin >> input;
+    cout << endl;
+    RemoveNode(input);
+
+    cout << endl;
+}
+
+// attempt at visual print
+template <class T>
+void BinaryTree<T>::VisualPrint()
+{
+    if (root)
+    {
+        node* lvl1 = root;
+        node* lvl2[2] = {nullptr};
+
+        for (int i = 0; i <= 1; i++)
+        {
+            if (lvl1->left)
+                lvl2[i] = lvl1->left;
+            i++;
+            if (lvl1->right)
+                lvl2[i] = lvl1->right;
+        }
+
+        node* lvl3[4] = {nullptr};
+
+        int j = 0;
+        for (int i = 0; i <= 1; i++)
+        {
+            if (lvl2[i]->left)
+                lvl3[i+(i*1)] = lvl2[i]->left;
+            j++;
+            if (lvl2[i]->right)
+                lvl3[i+1+(i*1)] = lvl2[i]->right;
+            j++;
+        }
+
+        node* lvl4[8] = {nullptr};
+
+        j = 0;
+        for (int i = 0; i <= 3; i++)
+        {
+            if (lvl3[i]->left)
+                lvl4[i+(i*1)] = lvl3[i]->left;
+            j++;
+            if (lvl3[i]->right)
+                lvl4[i+1+(i*1)] = lvl3[i]->right;
+            j++;
+        }
+
+        // print level 1
+        cout << string(50, ' ') << "__" << lvl1->key << "__" << endl;
+        //2
+        for(int i = 0; i <= 1; i++)
+        {
+            cout << string(29, ' ') << string(2, '_');
+            if (lvl2[i])
+                cout << lvl2[i]->key;
+            else
+                cout << '-';
+            cout << string(2, '_');
+        }
+        cout << endl;
+        // 3
+        for(int i = 0; i <= 3; i++)
+        {
+            cout << string(16, ' ') << string(2, '_');
+            if (lvl3[i])
+                cout << lvl3[i]->key;
+            else
+                cout << '-';
+            cout << string(2, '_');
+        }
+        cout << endl;
+        // 4
+        for(int i = 0; i < 8; i++)
+        {
+            cout << string(7, ' ') << string(2, '_');
+            if (lvl4[i])
+                cout << lvl4[i]->key;
+            else
+                cout << '-';
+            cout << string(2, '_');
+        }
+    }
 }
 
 
+template <class T>
+void BinaryTree<T>::VisualPrintNodeAndChildren()
+{
+    cout << "Which node to look at?";
+    T key;
+    cin >> key;
 
+    node* ptr = ReturnNode(key);
+    if (ptr)
+    {
+        cout << "  __" << key << "__\n";
+        cout << " |     |\n";
+        cout << " ";
+        if (ptr->left)
+            cout << ptr->left->key;
+        else
+            cout << " ";
+        cout << "     ";
+        if (ptr->right)
+            cout << ptr->right->key;
+    }
+    else
+    {
+        cout << "No such node.\n";
+    }
+}
+
+template <class T>
+void BinaryTree<T>::InsertFunction()
+{
+    T key;
+    cout << "What to insert? ";
+    cin >> key;
+    AddLeaf(key);
+}
 
 
 #endif // BINARYTREE_H
