@@ -1,8 +1,12 @@
 #include "player.h"
 #include <iostream>
-#include <time.h>
+#include <time.h> // for random int
+#include <hash_map>
+#include <unordered_set>
 
 using namespace std;
+
+hash<int> h;
 
 int hashFunction(int key)
 {
@@ -16,7 +20,6 @@ int main()
     // make blank hash table
     Player blank;
     blank.ID = 10000;
-    blank.username = "____";
     Player myHashTable[31] = blank; // index 0-12
     int hashTableSize = 31;
 
@@ -32,8 +35,8 @@ int main()
     cout << "*****     | Create players |     *****\n";
     for (int i = 0; i < 15; i++)
     {
-        playerArray[i].ID = rand()%19+1; // players get IDs here
-        cout << playerArray[i] << endl;
+        playerArray[i].ID = rand()%30; // players get IDs here
+        cout << playerArray[i];
     }
 
     // insert to hash table
@@ -56,13 +59,12 @@ int main()
     }
 
     // print hash table
-    cout << "*****     | Hash table |     *****\n";
+    cout << "\n**********   Hash table   **********\n";
     for (int i = 0; i < hashTableSize; i++)
     {
-        cout << myHashTable[i] << endl;
+        cout << myHashTable[i];
     }
 
-    // random ints
 
 
     return 0;
