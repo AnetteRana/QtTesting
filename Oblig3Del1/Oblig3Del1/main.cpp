@@ -1,71 +1,83 @@
-#include "player.h"
-#include <iostream>
-#include <time.h> // for random int
 #include <hash_map>
 #include <unordered_set>
-
+#include <iostream>
 using namespace std;
 
-hash<int> h;
+//hash<int> h;
 
-int hashFunction(int key)
+class MyClass {
+public:
+    int key;
+    string s;
+    size_t operator() (const MyClass& t)
+    {
+        return t.key % 11;
+    }
+    bool operator == (const MyClass& t2) const { return key == t2.key; }
+};
+
+// definere egen hashfunksjon ... Overlaster STD::hash
+namespace std {
+template<>
+class hash<MyClass>
 {
-    return key % 31;
+public:
+    size_t operator() (const MyClass& t) const
+    {
+        return t.key % 11;
+    }
+    bool operator() (const MyClass& t1, const MyClass& t2)
+    {
+        return t1.key == t2.key;
+    }
+};
 }
+
 
 int main()
 {
-    srand(time(0)); // to make random numbers
+    //unordered_set<MyClass> unorderedSetForTest;
+    unordered_multiset<MyClass> unorderedSetForTest;
+    //unordered_set<MyClass>::iterator iteratorForUnorderedSetForTest;
+    unordered_multiset<MyClass>::iterator iteratorForUnorderedSetForTest;
+    MyClass t;
 
-    // make blank hash table
-    Player blank;
-    blank.ID = 10000;
-    Player myHashTable[31] = blank; // index 0-12
-    int hashTableSize = 31;
 
-    // create player list
-    Player playerArray[15]; // fill an array with Players
-    // give them names
-    string names[15] = {"Luke", "Leia", "Jack", "Jill", "Joan", "Matt", "Roma", "Mimi", "Kiki", "Suzi", "Jake", "Mana", "Dina", "Tina", "Jojo"};
-    for (int i = 0; i < 15; i++)
-    {
-        playerArray[i].username = names[i];
-    }
-    // give them IDs + print players
-    cout << "*****     | Create players |     *****\n";
-    for (int i = 0; i < 15; i++)
-    {
-        playerArray[i].ID = rand()%30; // players get IDs here
-        cout << playerArray[i];
-    }
+    // lage pseudo-random objekter (manuelt)
+    t.key = 7; t.s = "seven";
+    unorderedSetForTest.insert(t);
+    t.key = 10; t.s = "ten";
+    unorderedSetForTest.insert(t);
+    t.key = 9; t.s = "nine";
+    unorderedSetForTest.insert(t);
+    t.key = 8; t.s = "eight";
+    unorderedSetForTest.insert(t);
+    t.key = 7; t.s = "seven2";
+    unorderedSetForTest.insert(t);
+    t.key = 8; t.s = "eight2";
+    unorderedSetForTest.insert(t);
+    t.key = 3; t.s = "three";
+    unorderedSetForTest.insert(t);
+    t.key = 7; t.s = "seven3";
+    unorderedSetForTest.insert(t);
+    t.key = 9; t.s = "nine2";
+    unorderedSetForTest.insert(t);
+    t.key = 4; t.s = "four";
+    unorderedSetForTest.insert(t);
+    t.key = 4; t.s = "four2";
+    unorderedSetForTest.insert(t);
+    t.key = 1; t.s = "one";
+    unorderedSetForTest.insert(t);
+    cout << "12 object inserted to set.\n";
+    cout << "Size = " << unorderedSetForTest.size() << endl;
 
-    // insert to hash table
-    for (int i = 0; i < 15; i++)
-    {
-        int index = hashFunction(playerArray[i].ID);
-        for (int j = 0; j < hashTableSize ;j++)
-        {
-            if (myHashTable[ index ].ID == 10000)
-            {
-                myHashTable[ index ] = playerArray[i];
-                break;
-            }
-            else
-            {
-                index++;
-                index % hashTableSize;
-            }
-        }
-    }
-
-    // print hash table
-    cout << "\n**********   Hash table   **********\n";
-    for (int i = 0; i < hashTableSize; i++)
-    {
-        cout << myHashTable[i];
-    }
-
+    t.key = 4;
+    cout << "How many with key 4: " << unorderedSetForTest.count(t) << endl;
+    iteratorForUnorderedSetForTest = unorderedSetForTest.find(t);
+    t = *iteratorForUnorderedSetForTest;
+    cout << t.key << " " << t.s << endl;
 
 
     return 0;
 }
+

@@ -1,17 +1,11 @@
 #ifndef PLAYER_H
 #define PLAYER_H
-#include <iostream>
 
-using namespace std;
 
-class Player
+class player
 {
 public:
-    string username;
-    int ID; // the key
-
-    Player();
-    friend ostream &operator<<(ostream &output, Player &obj);
+    player();
 };
 
 #endif // PLAYER_H
